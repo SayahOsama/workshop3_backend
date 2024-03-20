@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: '*', // Allow access from any origin
+    origin: 'https://osama-sayah.github.io/workshop3_frontend/',
     credentials: true, // Enable credentials (cookies, authorization headers, etc.)
 }));
 
