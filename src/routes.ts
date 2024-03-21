@@ -39,7 +39,7 @@ export async function loginRoute(req: Request, res: Response) {
 
 export async function logoutRoute(req: Request, res: Response) {
   const secure = process.env.NODE_ENV === 'production';
-  res.clearCookie('token', { secure: secure, sameSite: 'strict' }); // Clear the token cookie
+  res.clearCookie('token', {httpOnly: true, secure: secure, sameSite: 'strict', maxAge: 2 * 24 * 60 * 60 * 1000 }); // Clear the token cookie
   res.status(200).send('Logged out');
 }
 
