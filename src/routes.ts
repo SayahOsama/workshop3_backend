@@ -33,8 +33,8 @@ export async function loginRoute(req: Request, res: Response) {
   const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '2d' });
 
   const secure = process.env.NODE_ENV === 'production';
-  //res.cookie('token', token, { httpOnly: true, secure: secure, sameSite: 'strict', maxAge: 2 * 24 * 60 * 60 * 1000 }); // Set the token cookie
-  res.cookie('token', token, { httpOnly: true, maxAge: 2 * 24 * 60 * 60 * 1000 }); // Set the token cookie
+  res.cookie('token', token, { httpOnly: true, secure: secure, sameSite: 'strict', maxAge: 2 * 24 * 60 * 60 * 1000 }); // Set the token cookie
+  // res.cookie('token', token, { httpOnly: true, maxAge: 2 * 24 * 60 * 60 * 1000 }); // Set the token cookie
   res.status(200).send('Logged in');
 }
 
